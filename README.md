@@ -1,8 +1,10 @@
 # ReadMe
 
-## Debug rnmapbox/maps on M1
-
 a template project to debug the integration of rnmapbox/maps with react native on M1
+
+## Setup
+
+### Environment Setup
 
 `npx react-native@latest init aardvark_debug`
 
@@ -36,9 +38,33 @@ Target: arm64-apple-macosx13.0
 
 `brew install cocoapods` (note - tried other install methods, same issue)
 
-### start project
+## start project
 
 ```sh
 npm run pod:install
 npm run ios
+```
+
+## Add Maps
+
+### Install
+
+```sh
+npm install --save @rnmapbox/maps
+```
+
+### Setup Instructions
+
+
+```ruby
+  pre_install do |installer|
+    $RNMapboxMaps.pre_install(installer)
+    ... other pre install hooks
+  end
+
+    post_install do |installer|
+    $RNMapboxMaps.post_install(installer)
+    ... other post install hooks
+  end
+  
 ```
