@@ -1,6 +1,8 @@
-# ReadMe
+# Basic Install on M1 Apple Silicon
 
-a template project to debug the integration of rnmapbox/maps with react native on M1
+Goal: debug the integration of rnmapbox/maps with react native on M1
+
+[**Project example can be found here**](https://github.com/ax0n-pr1me/aardvark-debug)
 
 ## Setup
 
@@ -59,7 +61,46 @@ npm install --save @rnmapbox/maps
   $RNMapboxMapsImpl = 'mapbox'
 ```
 
-error below, try adding in pre and post install methods in `Podfile`
+### App.js
+
+```js
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import Mapbox from '@rnmapbox/maps';
+
+Mapbox.setAccessToken('<YOUR_ACCESSTOKEN>');
+
+const App = () => {
+  return (
+    <View style={styles.page}>
+      <View style={styles.container}>
+        <Mapbox.MapView style={styles.map} />
+      </View>
+    </View>
+  );
+}
+
+export default App;
+
+const styles = StyleSheet.create({
+  page: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  container: {
+    height: 300,
+    width: 300,
+  },
+  map: {
+    flex: 1
+  }
+});
+```
+
+Try to run, receive same error (same with and without the following steps)
+
+Try adding in pre and post install methods in `Podfile`
 
 ```ruby
   pre_install do |installer|
@@ -94,7 +135,7 @@ npm run pod:install
 npm run ios
 ```
 
-Same errors
+## Error Logs
 
 ```sh
 Invalid react tag, could not find RCTMGLMapView
