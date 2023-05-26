@@ -50,6 +50,10 @@ target 'aardvark_debug' do
     # Pods for testing
   end
 
+  pre_install do |installer|
+    $RNMapboxMaps.pre_install(installer)
+  end
+
   post_install do |installer|
     react_native_post_install(
       installer,
@@ -57,6 +61,7 @@ target 'aardvark_debug' do
       # necessary for Mac Catalyst builds
       :mac_catalyst_enabled => false
     )
+    $RNMapboxMaps.post_install(installer)
     __apply_Xcode_12_5_M1_post_install_workaround(installer)
   end
 end
