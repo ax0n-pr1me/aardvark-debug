@@ -4,7 +4,7 @@
 
 a template project to debug the integration of rnmapbox/maps with react native on M1
 
-`npx react-native@latest init rnmapbox_m1`
+`npx react-native@latest init aardvark_debug`
 
 ```sh
 ❯ node --version
